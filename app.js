@@ -5,8 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 const mongoose = require('mongoose');
-//mongoose.connect('mongodb://127.0.0.1:27017/mongodbles');
-mongoose.connect('mongodb+srv://faisalcollinet01:1Lx2LyxfxWcqD6AX@mongodbles.1de1o.mongodb.net/?retryWrites=true&w=majority&appName=mongodbles')
+const config = require('config');
+
+const connection = config.get('mongodb');
+mongoose.connect(connection);
 
 const messageRouter = require('./routes/api/v1/messages');
 
